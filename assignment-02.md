@@ -73,7 +73,7 @@ and push to your github repository.
   variety of inputs in `test_main.py` to test whether your code scales in the manner
   described by the asymptotic runtime. Please refer to Recitation 3 for some basic implementations, and Eqs (7) and (8) in the slides https://github.com/allan-tulane/cmps2200-slides/blob/main/module-02-recurrences/recurrences-integer-multiplication.ipynb
 
-    - I used a for loop to generate values at different bit values, then used the quadratic multiply from recitation 3 to compare against sub-quadratic from this assignment. I used the `time_multiply()` function that was partially provided in `main.py` to measure the runtimes, and implimented my own `graph()` function to cache the runtimes and plot them against the number of bits used by the integers. 
+    - In order to compare the runtimes of sub-quadratic and quadratic multiply, I created the document `graph.py`. I used a for loop to generate integers with increasing bit values, then used the `quadratic multiply()` from recitation 3 to compare against `sub-quadratic()` from this assignment. I used the `time_multiply()` function that was partially provided in `main.py` to measure the runtimes, and implimented my own `graph()` function to cache the runtimes and plot them against the number of bits used by the integers. 
  
  ![graph comparing subquadratic and quadratic multiply time complexities](Figure_1.png)
 
