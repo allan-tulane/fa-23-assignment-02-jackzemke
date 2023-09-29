@@ -3,7 +3,6 @@ CMPS 2200  Assignment 2.
 See assignment-02.pdf for details.
 """
 import time
-import matplotlib.pyplot as plt 
 
 class BinaryNumber:
     """ done """
@@ -74,3 +73,8 @@ def _subquadratic_multiply (x,y):
     return BinaryNumber(z2shifted.decimal_val + z1real.decimal_val + z0.decimal_val)
     # return(BinaryNumber(a.decimal_val+(b.decimal_val-c.decimal_val-a.decimal_val)+c.decimal_val))
 
+def time_multiply(x, y, f):
+    start = time.time()
+    f(x,y)
+    # multiply two numbers x, y using function f
+    return (time.time() - start)*1000
