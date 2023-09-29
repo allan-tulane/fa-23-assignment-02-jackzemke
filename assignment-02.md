@@ -26,7 +26,7 @@ and push to your github repository.
   * $W(n)=8W(n/2)+n^3$
     - For a node of size $n$, the cost is $n^3$, and the cost of its children is $8 {(\frac{n}{2})}^3 = 8\frac{n^3}{8} = \frac{8}{8} n^3 = n^3$. Therefore, this recurrence is balanced. The maximum cost of any level is upper bounded by $n^3$, and there are at most $\log_{2} n$ nodes. Therefore, the total cost is bounded by $O(n^3\log n)$
 
-  * $W(n)=49W(n/25)+n^{3/2}\log n$ ****
+  * $W(n)=49W(n/25)+n^{3/2}\log n$
     - For a node of size $n$, the cost is $n^{3/2}\log n$, and the cost of its children is $49(\frac{n}{25})^{3/2}\log\frac{n}{25} = \frac{49}{125}n^{2/3}\log(\frac{n}{25})$ which is less than the cost of the root by a factor of at least $2.55$. Therefore this recurrence is root dominated. The work of the root, $n^{3/2}\log n$ is bounded by $O(n^2\log n)$
     
   * $W(n)=W(n-1)+2$
@@ -34,7 +34,7 @@ and push to your github repository.
   * $W(n)= W(n-1)+n^c$, with $c\geq 1$
     - This recurrence is root dominated because the work geometrically decreases with each call. The factor of the geometric decrease gets larger as $n \rightarrow 1$, because $\frac{n}{n-1}$ gets larger. The largest level is at the root and has a value of $n^c$. Thus, this recurrence is bounded by $O(n^c)$.
   * $W(n)=W(\sqrt{n})+1$
-    - for a node of size $n$, the cost of the node is $1$ and the cost of its children is $\sqrt{n}$. Because $\sqrt{n} \ge 1$, this recurrence is leaf dominated. $b = 1$, so there are $\log_{\sqrt{n}}n = 2$ levels. The work of this recurrence will always be 2, no matter the size of the input $n$. Thus, this recurrence is excecuted in constant time and therefore bounded by $O(1)$.
+    - for a node of size $n$, the cost of the node is $1$ and the cost of its children is $\sqrt{n}$. Because $\sqrt{n} \ge 1$, this recurrence is leaf dominated. $b = \sqrt{n}$, so there are $\log_{\sqrt{n}}n = 2$ levels. The depth of this tree will always be 2, no matter the size of the input $n$. Thus, this recurrence is excecuted in constant time and therefore bounded by $O(1)$.
 
 
 2. Suppose that for a given task you are choosing between the following three algorithms:
@@ -47,7 +47,7 @@ and push to your github repository.
   * Algorithm $\mathcal{B}$ solves problems of size $n$ by
       recursively solving two subproblems of size $n-1$ and then
       combining the solutions in constant time.
-    - The work of this algorithm can be modeled by the recurrence $W(n) = 2W(n-1) + 1$. This algorithm is root dominated because it creates two recursive calls and only reduces the input size by 1 for each level. The depth of the tree can be defined as $2^n$, and each node has constant work. Thus this recurrence is bounded by $O(2^n)$.
+    - The work of this algorithm can be modeled by the recurrence $W(n) = 2W(n-1) + 1$. This algorithm is leaf dominated because it creates two recursive calls and only reduces the input size by 1 for each level. The depth of the tree can be defined as $2^n$, and each node has constant work. Thus this recurrence is bounded by $O(2^n)$.
     
   * Algorithm $\mathcal{C}$ solves problems of size $n$ by dividing
       them into nine subproblems of size $n/3$, recursively solving
@@ -72,7 +72,9 @@ and push to your github repository.
   subquadratic time. Then test the empirical running times across a
   variety of inputs in `test_main.py` to test whether your code scales in the manner
   described by the asymptotic runtime. Please refer to Recitation 3 for some basic implementations, and Eqs (7) and (8) in the slides https://github.com/allan-tulane/cmps2200-slides/blob/main/module-02-recurrences/recurrences-integer-multiplication.ipynb
+
+    - I used a for loop to generate values at different bit values, then used the quadratic multiply from recitation 3 to compare against sub-quadratic from this assignment. I used the `time_multiply()` function that was partially provided in `main.py` to measure the runtimes, and implimented my own `graph()` function to cache the runtimes and plot them against the number of bits used by the integers. 
  
- 
+ ![graph comparing subquadratic and quadratic multiply time complexities](Figure_1.png)
 
 
