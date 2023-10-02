@@ -30,14 +30,14 @@ and push to your github repository.
     - For a node of size $n$, the cost is $n^{3/2}\log n$, and the cost of its children is $49(\frac{n}{25})^{3/2}\log\frac{n}{25} = \frac{49}{125}n^{2/3}\log(\frac{n}{25})$ which is less than the cost of the root by a factor of at least $2.55$. Therefore this recurrence is root dominated. The work of the root, $n^{3/2}\log n$ is bounded by $O(n^2\log n)$
     
   * $W(n)=W(n-1)+2$
-    - This recurrence is balanced because the work only decreases by 1 for each level. The largest level is at the root and has a value of $n$. There are $n$ levels, so the recurrence solves to $O(n*n) \in O(n^2)$
+    - This recurrence is balanced because the work only decreases by 1 for each level. The largest level is at the root and has a value of $2$. There are $n$ levels, so the recurrence solves to $O(2*n) \in O(n)$
   * $W(n)= W(n-1)+n^c$, with $c\geq 1$
     - This recurrence is root dominated because the work geometrically decreases with each call. The factor of the geometric decrease gets larger as $n \rightarrow 1$, because $\frac{n}{n-1}$ gets larger. The largest level is at the root and has a value of $n^c$. Thus, this recurrence is bounded by $O(n^c)$.
   * $W(n)=W(\sqrt{n})+1$
-    - for a node of size $n$, the cost of the node is $1$ and the cost of its children is $\sqrt{n}$. Because $\sqrt{n} \ge 1$, this recurrence is leaf dominated. $b = \sqrt{n}$, so there are $\log_{\sqrt{n}}n = 2$ levels. The depth of this tree will always be 2, no matter the size of the input $n$. Thus, this recurrence is excecuted in constant time and therefore bounded by $O(1)$.
+    - For a node of size $n$, the cost of the node is $1$ and the cost of its children is $1$. Thus, this recurrence is balanced. The depth of the tree will be defined by $\log n$, and the cost of each level will be $\log n$. Thus, this recurrence is $\in O(\log\log n)$.
 
 
-2. Suppose that for a given task you are choosing between the following three algorithms:
+2. Suppose that for a given task you are choosing between the following three algorithms: 
 
   * Algorithm $\mathcal{A}$ solves problems by dividing them into
       five subproblems of half the size, recursively solving each
@@ -47,7 +47,7 @@ and push to your github repository.
   * Algorithm $\mathcal{B}$ solves problems of size $n$ by
       recursively solving two subproblems of size $n-1$ and then
       combining the solutions in constant time.
-    - The work of this algorithm can be modeled by the recurrence $W(n) = 2W(n-1) + 1$. This algorithm is leaf dominated because it creates two recursive calls and only reduces the input size by 1 for each level. The depth of the tree can be defined as $2^n$, and each node has constant work. Thus this recurrence is bounded by $O(2^n)$.
+    - The work of this algorithm can be modeled by the recurrence $W(n) = 2W(n-1) + 1$. This algorithm is leaf dominated because it creates two recursive calls and only reduces the input size by 1 for each level, while each node has constant work. The depth of the tree will be given by $n$. The work at each level can be computed by calculating the number of nodes at said level, because each node has constant work, which will be given by $2^i$. At the $i\textrm{th}$ (leaf) level, the work will be $2^n$ (by substituting $n$ for $i$). Thus this recurrence is bounded by $O(2^n)$.
     
   * Algorithm $\mathcal{C}$ solves problems of size $n$ by dividing
       them into nine subproblems of size $n/3$, recursively solving
